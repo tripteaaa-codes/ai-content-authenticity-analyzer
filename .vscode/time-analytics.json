@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "project": {
+    "totalFocusTime": 227749,
+    "totalActiveTime": 4589
+  },
+  "files": {
+    ".gitignore": {
+      "pending": 4589,
+      "focus": 45751
+    }
+  }
+}
