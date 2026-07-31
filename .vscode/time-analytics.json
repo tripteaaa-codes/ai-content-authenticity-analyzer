@@ -1,13 +1,85 @@
 {
   "version": "1.0",
   "project": {
-    "totalFocusTime": 227749,
-    "totalActiveTime": 4589
+    "totalFocusTime": 16279684,
+    "totalActiveTime": 2318440
   },
   "files": {
     ".gitignore": {
       "pending": 4589,
-      "focus": 45751
+      "focus": 190140
+    },
+    "README.md": {
+      "pending": 0,
+      "focus": 144090
+    },
+    "backend/config/db.js": {
+      "pending": 99054,
+      "focus": 255178
+    },
+    "backend/models/User.js": {
+      "pending": 124619,
+      "focus": 271283
+    },
+    "backend/models/Analysis.js": {
+      "pending": 0,
+      "focus": 69043
+    },
+    "backend/controllers/authController.js": {
+      "pending": 508727,
+      "focus": 947153
+    },
+    "backend/controllers/analysisController.js": {
+      "pending": 428323,
+      "focus": 1161467
+    },
+    "backend/middleware/authMiddleware.js": {
+      "pending": 380284,
+      "focus": 758458
+    },
+    "backend/middleware/uploadMiddleware.js": {
+      "pending": 226828,
+      "focus": 511167
+    },
+    "backend/services/textAnalyzer.js": {
+      "pending": 0,
+      "focus": 9858
+    },
+    "backend/services/imageAnalyzer.js": {
+      "pending": 0,
+      "focus": 9917
+    },
+    "backend/services/videoAnalyzer.js": {
+      "pending": 0,
+      "focus": 30779
+    },
+    "backend/server.js": {
+      "pending": 265735,
+      "focus": 1096446
+    },
+    "backend/.env": {
+      "pending": 16999,
+      "focus": 114106
+    },
+    "backend/.gitignore": {
+      "pending": 0,
+      "focus": 35778
+    },
+    "package.json": {
+      "pending": 38724,
+      "focus": 324704
+    },
+    "backend/routes/authRoutes.js": {
+      "pending": 82957,
+      "focus": 145279
+    },
+    "backend/routes/analysisRoutes.js": {
+      "pending": 111384,
+      "focus": 302654
     }
+  },
+  "deleted": {
+    "active": 30217,
+    "focus": 384850
   }
 }
