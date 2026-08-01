@@ -2,40 +2,47 @@ const fs = require("fs");
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 
-// ---------------- TEXT ANALYSIS ----------------
-
-const analyzeText = async (req, res) => {
-    const { text } = req.body;
-
-    if (!text) {
-        return res.status(400).json({
-            message: "Text is required"
-        });
-    }
-
-    let aiProbability = 40;
-
-    if (text.length > 200) aiProbability += 20;
-    if (text.includes("therefore")) aiProbability += 10;
-    if (text.includes("furthermore")) aiProbability += 10;
-
-    if (aiProbability > 100) aiProbability = 100;
-
-    const humanProbability = 100 - aiProbability;
-
-    res.json({
-        verdict:
-            aiProbability >= 60
-                ? "Likely AI Generated"
-                : "Likely Human Written",
-
-        aiProbability,
-        humanProbability,
-        analyzedBy: req.user.name
-    });
+const endpointMap = {
+    text: "http://127.0.0.1:8000/detect/text",
+    image: "http://127.0.0.1:8000/detect/image",
+    video: "http://127.0.0.1:8000/detect/video",
+    audio: "http://127.0.0.1:8000/detect/audio",
+    document: "http://127.0.0.1:8000/detect/document"
 };
 
-// ---------------- IMAGE ANALYSIS ----------------
+const analyzeText = async (req, res) => {
+    try {
+        const { text } = req.body;
+
+        if (!text) {
+            return res.status(400).json({
+                message: "Text is required"
+            });
+        }
+
+        const response = await fetch(endpointMap.text, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text })
+        });
+
+        const result = await response.json();
+
+        res.json({
+            ...result,
+            analyzedBy: req.user.name
+        });
+
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
 
 const analyzeImage = async (req, res) => {
     try {
@@ -53,7 +60,7 @@ const analyzeImage = async (req, res) => {
         );
 
         const response = await fetch(
-            "http://127.0.0.1:8000/detect",
+            endpointMap.image,
             {
                 method: "POST",
                 body: formData,
@@ -65,8 +72,7 @@ const analyzeImage = async (req, res) => {
 
         res.json({
             file: req.file.filename,
-            aiProbability: result.aiProbability,
-            verdict: result.verdict,
+            ...result,
             analyzedBy: req.user.name
         });
 

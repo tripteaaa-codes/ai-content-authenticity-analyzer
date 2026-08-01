@@ -12,6 +12,5 @@ const router = express.Router();
 
 router.post("/text", protect, analyzeText);
 router.post("/image", protect, upload.single("image"), analyzeImage);
-// router.post("/video", protect, upload.single("video"), analyzeVideo);
 
 module.exports = router;

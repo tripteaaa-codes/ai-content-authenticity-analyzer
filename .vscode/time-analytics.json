@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "project": {
-    "totalFocusTime": 20813086,
-    "totalActiveTime": 2859188
+    "totalFocusTime": 23812512,
+    "totalActiveTime": 3680729
   },
   "files": {
     ".gitignore": {
@@ -30,8 +30,8 @@
       "focus": 951078
     },
     "backend/controllers/analysisController.js": {
-      "pending": 782753,
-      "focus": 2517675
+      "pending": 1000543,
+      "focus": 3328717
     },
     "backend/middleware/authMiddleware.js": {
       "pending": 380284,
@@ -43,7 +43,7 @@
     },
     "backend/services/textAnalyzer.js": {
       "pending": 0,
-      "focus": 9858
+      "focus": 22739
     },
     "backend/services/imageAnalyzer.js": {
       "pending": 0,
@@ -74,16 +74,40 @@
       "focus": 148493
     },
     "backend/routes/analysisRoutes.js": {
-      "pending": 161029,
-      "focus": 527404
+      "pending": 168529,
+      "focus": 639414
     },
     "ai-detector/detector.py": {
-      "pending": 128956,
-      "focus": 843883
+      "pending": 132053,
+      "focus": 973885
     },
     ".vscode/settings.json": {
       "pending": 548,
       "focus": 23036
+    },
+    "ai-detector/services/image_detector.py": {
+      "pending": 63945,
+      "focus": 287995
+    },
+    "ai-detector/services/video_detector.py": {
+      "pending": 158469,
+      "focus": 275239
+    },
+    "ai-detector/services/audio_detector.py": {
+      "pending": 101382,
+      "focus": 175924
+    },
+    "ai-detector/services/document_detector.py": {
+      "pending": 69779,
+      "focus": 301467
+    },
+    "ai-detector/services/text_detector.py": {
+      "pending": 199579,
+      "focus": 408692
+    },
+    "ai-detector/requirements.txt": {
+      "pending": 0,
+      "focus": 30999
     }
   },
   "deleted": {
