@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "project": {
-    "totalFocusTime": 23812512,
-    "totalActiveTime": 3680729
+    "totalFocusTime": 27040404,
+    "totalActiveTime": 3897824
   },
   "files": {
     ".gitignore": {
@@ -22,16 +22,16 @@
       "focus": 271283
     },
     "backend/models/Analysis.js": {
-      "pending": 0,
-      "focus": 70192
+      "pending": 165656,
+      "focus": 377029
     },
     "backend/controllers/authController.js": {
       "pending": 508727,
       "focus": 951078
     },
     "backend/controllers/analysisController.js": {
-      "pending": 1000543,
-      "focus": 3328717
+      "pending": 1019151,
+      "focus": 3481385
     },
     "backend/middleware/authMiddleware.js": {
       "pending": 380284,
@@ -54,12 +54,12 @@
       "focus": 30779
     },
     "backend/server.js": {
-      "pending": 265735,
-      "focus": 1096446
+      "pending": 270943,
+      "focus": 1286229
     },
     "backend/.env": {
-      "pending": 16999,
-      "focus": 114106
+      "pending": 19229,
+      "focus": 143580
     },
     "backend/.gitignore": {
       "pending": 0,
@@ -74,8 +74,8 @@
       "focus": 148493
     },
     "backend/routes/analysisRoutes.js": {
-      "pending": 168529,
-      "focus": 639414
+      "pending": 193922,
+      "focus": 774895
     },
     "ai-detector/detector.py": {
       "pending": 132053,
@@ -103,7 +103,7 @@
     },
     "ai-detector/services/text_detector.py": {
       "pending": 199579,
-      "focus": 408692
+      "focus": 431143
     },
     "ai-detector/requirements.txt": {
       "pending": 0,
