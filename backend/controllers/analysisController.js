@@ -1,4 +1,8 @@
-const sharp = require("sharp");
+const fs = require("fs");
+const FormData = require("form-data");
+const fetch = require("node-fetch");
+
+// ---------------- TEXT ANALYSIS ----------------
 
 const analyzeText = async (req, res) => {
     const { text } = req.body;
@@ -9,24 +13,29 @@ const analyzeText = async (req, res) => {
         });
     }
 
-    const wordCount = text.split(" ").length;
-
     let aiProbability = 40;
 
-    if (wordCount > 50) aiProbability += 20;
+    if (text.length > 200) aiProbability += 20;
     if (text.includes("therefore")) aiProbability += 10;
     if (text.includes("furthermore")) aiProbability += 10;
+
+    if (aiProbability > 100) aiProbability = 100;
 
     const humanProbability = 100 - aiProbability;
 
     res.json({
-        verdict: aiProbability > 60 ? "Likely AI Generated" : "Likely Human Written",
+        verdict:
+            aiProbability >= 60
+                ? "Likely AI Generated"
+                : "Likely Human Written",
+
         aiProbability,
         humanProbability,
-
         analyzedBy: req.user.name
     });
 };
+
+// ---------------- IMAGE ANALYSIS ----------------
 
 const analyzeImage = async (req, res) => {
     try {
@@ -36,61 +45,41 @@ const analyzeImage = async (req, res) => {
             });
         }
 
-        const metadata = await sharp(req.file.path).metadata();
+        const formData = new FormData();
 
-        let aiProbability = 25;
-        const reasons = [];
+        formData.append(
+            "file",
+            fs.createReadStream(req.file.path)
+        );
 
-        if (!metadata.exif) {
-            aiProbability += 20;
-            reasons.push("Missing camera EXIF metadata");
-        }
+        const response = await fetch(
+            "http://127.0.0.1:8000/detect",
+            {
+                method: "POST",
+                body: formData,
+                headers: formData.getHeaders()
+            }
+        );
 
-        if (metadata.width === metadata.height) {
-            aiProbability += 10;
-            reasons.push("Perfect square dimensions detected");
-        }
-
-        if (metadata.width > 1500 || metadata.height > 1500) {
-            aiProbability += 15;
-            reasons.push("Unusually high resolution");
-        }
-
-        
-        if (metadata.format === "png") {
-            aiProbability += 10;
-            reasons.push("PNG export format detected");
-        }
-
-        if (aiProbability > 100) aiProbability = 100;
-
-        const humanProbability = 100 - aiProbability;
+        const result = await response.json();
 
         res.json({
             file: req.file.filename,
-            width: metadata.width,
-            height: metadata.height,
-            format: metadata.format,
-
-            verdict:
-                aiProbability >= 60
-                    ? "Possibly AI Generated"
-                    : "Likely Real Photograph",
-
-            aiProbability,
-            humanProbability,
-            reasons,
+            aiProbability: result.aiProbability,
+            verdict: result.verdict,
             analyzedBy: req.user.name
         });
 
     } catch (error) {
+        console.log(error);
+
         res.status(500).json({
             message: error.message
         });
     }
 };
 
-module.exports = { 
+module.exports = {
     analyzeText,
     analyzeImage
 };

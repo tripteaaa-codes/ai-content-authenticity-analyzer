@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "project": {
-    "totalFocusTime": 16279684,
-    "totalActiveTime": 2318440
+    "totalFocusTime": 20813086,
+    "totalActiveTime": 2859188
   },
   "files": {
     ".gitignore": {
@@ -23,23 +23,23 @@
     },
     "backend/models/Analysis.js": {
       "pending": 0,
-      "focus": 69043
+      "focus": 70192
     },
     "backend/controllers/authController.js": {
       "pending": 508727,
-      "focus": 947153
+      "focus": 951078
     },
     "backend/controllers/analysisController.js": {
-      "pending": 428323,
-      "focus": 1161467
+      "pending": 782753,
+      "focus": 2517675
     },
     "backend/middleware/authMiddleware.js": {
       "pending": 380284,
-      "focus": 758458
+      "focus": 759579
     },
     "backend/middleware/uploadMiddleware.js": {
-      "pending": 226828,
-      "focus": 511167
+      "pending": 232982,
+      "focus": 629021
     },
     "backend/services/textAnalyzer.js": {
       "pending": 0,
@@ -66,16 +66,24 @@
       "focus": 35778
     },
     "package.json": {
-      "pending": 38724,
-      "focus": 324704
+      "pending": 39739,
+      "focus": 553585
     },
     "backend/routes/authRoutes.js": {
       "pending": 82957,
-      "focus": 145279
+      "focus": 148493
     },
     "backend/routes/analysisRoutes.js": {
-      "pending": 111384,
-      "focus": 302654
+      "pending": 161029,
+      "focus": 527404
+    },
+    "ai-detector/detector.py": {
+      "pending": 128956,
+      "focus": 843883
+    },
+    ".vscode/settings.json": {
+      "pending": 548,
+      "focus": 23036
     }
   },
   "deleted": {

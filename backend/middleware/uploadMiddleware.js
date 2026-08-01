@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
         cb(null, "backend/uploads/");
     },
 
-    filename: (req, file, cb) =>{
+    filename: (req, file, cb) => {
         cb(
             null,
             Date.now() + path.extname(file.originalname)
@@ -15,25 +15,33 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-    const alllowed = [
+    console.log("Uploaded type:", file.mimetype);
+
+    const allowed = [
+        // Images
         "image/jpeg",
+        "image/jpg",
         "image/png",
         "image/webp",
+        "image/gif",
+
+        // Videos
         "video/mp4",
-        "video/mov",
-        "video/avi"
+        "video/quicktime",   // .mov
+        "video/x-msvideo",   // .avi
+        "video/x-matroska"   // .mkv
     ];
-    
+
     if (allowed.includes(file.mimetype)) {
         cb(null, true);
     } else {
-        cb(new Error("Unsupported file type"));
+        cb(new Error("Only image and video files are allowed"));
     }
 };
 
-const upload = multer({ 
+const upload = multer({
     storage,
-    fileFilter 
+    fileFilter
 });
 
 module.exports = upload;
